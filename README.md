@@ -7,12 +7,12 @@ example:
 ## Steps
 1. [Write the logic you want to reuse in an existing component](#step-1)
 2. [Create a HOC file and add the HOC scaffold boiler plate code](#step-2)
-3. Move the reusable logic into the HOC
-4. Pass the props/config/behavior 
+3. [Move the reusable logic into the HOC](#step-3)
+4. [Pass the props/config/behavior](#step-4)
 
 ## User Authentication HOC Example
 ### Step 1
-1. Write the logic you want to reuse in an existing component 
+- Write the logic you want to reuse in an existing component 
   - logic in the user auth components -
     - check if the connect to redux to check the state props to see if the user is authenticated.  
     - if the user is authenticated (state is true) - allow access to component
@@ -52,7 +52,7 @@ example:
     export default connect(mapStateToProps)CommentList;
     ```
 ### Step 2
-2.  Create the HOC file and add the scaffolding
+- Create the HOC file and add the scaffolding
   - create a file for the HOC (begin with a lower-case)
     - lower-case = exports a function
     - upper-case = exports a class
@@ -68,8 +68,8 @@ example:
         }
       }
     ```
-  
-3. Move the reusable logic into the HOC
+### Step 3
+- Move the reusable logic into the HOC
   - for user auth component 
     - move the componentDidMount, componentDidUpdate, shoouldNavigateAway functions
     - move the connect/mapStateToProps functionality  
@@ -103,8 +103,8 @@ example:
       return connect(mapStateToProps)(ComposedComponent);
   };
   ```
-  
-4. Pass the props/config/behavior 
+### Step 4
+- Pass the props/config/behavior 
   - for components using the auth HOC - we want the actions props from the redux `connect` HOC and the `history` prop from react-router to be passed down to the childComponent.  To do this we add `{...this.props}` to the returned child component.
   ```javascript
       class ComposedComponent extends Component {
