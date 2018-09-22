@@ -5,12 +5,13 @@ example:
 - examples: `connect` from react-redux, `route` from react-router
 
 ## Steps
-1. Write the logic you want to reuse in an existing component 
-2. Create a HOC file and add the HOC scaffold boiler plate code 
+1. [Write the logic you want to reuse in an existing component](#step-1)
+2. [Create a HOC file and add the HOC scaffold boiler plate code](#step-2)
 3. Move the reusable logic into the HOC
 4. Pass the props/config/behavior 
 
 ## User Authentication HOC Example
+### Step 1
 1. Write the logic you want to reuse in an existing component 
   - logic in the user auth components -
     - check if the connect to redux to check the state props to see if the user is authenticated.  
@@ -50,7 +51,7 @@ example:
 
     export default connect(mapStateToProps)CommentList;
     ```
-  
+### Step 2
 2.  Create the HOC file and add the scaffolding
   - create a file for the HOC (begin with a lower-case)
     - lower-case = exports a function
