@@ -12,61 +12,61 @@ example:
 
 ## User Authentication HOC Example
 1. Write the logic you want to reuse in an existing component 
-- logic in the user auth components -
-  - check if the connect to redux to check the state props to see if the user is authenticated.  
-  - if the user is authenticated (state is true) - allow access to component
-  - if user is not authenticated - re-route user back to the home page
-  ```javascript
-  class CommentList extends Component {
-        componentDidMount() {
-            this.shouldNavigateAway();
-        }
-    
-        componentDidUpdate() {
-            this.shouldNavigateAway();
-        }
-    
-        shouldNavigateAway() {
-            if (!this.props.auth) {
-                this.props.history.push('/')
-            } 
-        }
-      render() {
-          return (
-              <div>
-                  <h4>comment list</h4>
-                  <ul>
-                    <li>comment #1</li>
-                    <li>comment #2</li>
-                  </ul> 
-              </div>
-          );
-       }
-    }
+  - logic in the user auth components -
+    - check if the connect to redux to check the state props to see if the user is authenticated.  
+    - if the user is authenticated (state is true) - allow access to component
+    - if user is not authenticated - re-route user back to the home page
+    ```javascript
+    class CommentList extends Component {
+          componentDidMount() {
+              this.shouldNavigateAway();
+          }
 
-    function mapStateToProps(state) {
-      return { auth: state.auth }
-    }
+          componentDidUpdate() {
+              this.shouldNavigateAway();
+          }
 
-  export default connect(mapStateToProps)CommentList;
-  ```
+          shouldNavigateAway() {
+              if (!this.props.auth) {
+                  this.props.history.push('/')
+              } 
+          }
+        render() {
+            return (
+                <div>
+                    <h4>comment list</h4>
+                    <ul>
+                      <li>comment #1</li>
+                      <li>comment #2</li>
+                    </ul> 
+                </div>
+            );
+         }
+      }
+
+      function mapStateToProps(state) {
+        return { auth: state.auth }
+      }
+
+    export default connect(mapStateToProps)CommentList;
+    ```
   
 2.  Create the HOC file and add the scaffolding
-- create a file for the HOC (begin with a lower-case)
-  - lower-case = exports a function
-  - upper-case = exports a class
-- create the scaffolding - a `composed component` will take a child component as an arg and return the child component.  When we import the child component we are importing the return value result of the `composed component` class.
-  ```javascript
-  import React, { Component } from 'react';
+  - create a file for the HOC (begin with a lower-case)
+    - lower-case = exports a function
+    - upper-case = exports a class
+  - create the scaffolding - a `composed component` will take a child component as an arg and return the child component.  When we import the child component we are importing the return value result of the `composed component` class.
+    ```javascript
+    import React, { Component } from 'react';
 
-  export default (ChildComponent) => {
-      class ComposedComponent extends Component {
-           render() {
-              return <ChildComponent />
-          }
+    export default (ChildComponent) => {
+        class ComposedComponent extends Component {
+             render() {
+                return <ChildComponent />
+            }
+        }
       }
-    }
-  ```
+    ```
   
 3. Move the reusable logic into the HOC
   - for user auth component 
