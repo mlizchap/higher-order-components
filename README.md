@@ -1,4 +1,4 @@
-example: 
+DEMO: https://github.com/mlizchap/react-hoc-login-app
 
 # Higher Order Components:
 - a react component made to reuse code
