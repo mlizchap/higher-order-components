@@ -9,6 +9,7 @@ example:
 2. [Create a HOC file and add the HOC scaffold boiler plate code](#step-2)
 3. [Move the reusable logic into the HOC](#step-3)
 4. [Pass the props/config/behavior](#step-4)
+5. [Hook-up child component to HOC](#step-5)
 
 ## User Authentication HOC Example
 ### Step 1
@@ -115,5 +116,17 @@ example:
               return <ChildComponent {...this.props}/>
           }
       }
+  ```
+  
+### Step 5
+- import HOC function and pass in the child component class
+  ```javascript
+  import checkUserAuth from '../../checkUserAuth';
+
+  class NewPost extends Component {
+    /* ... */
+  }
+
+  export default connect(null, { createPost })(checkUserAuth(NewPost));
   ```
 
